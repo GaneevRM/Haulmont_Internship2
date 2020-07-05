@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+    <persistence-unit name="contractcreator" transaction-type="RESOURCE_LOCAL">
+
+        <class>com.company.contractcreator.entity.Customer</class>
+        <class>com.company.contractcreator.entity.Contract</class>
+        <class>com.company.contractcreator.entity.Provider</class>
+    </persistence-unit>
+</persistence>

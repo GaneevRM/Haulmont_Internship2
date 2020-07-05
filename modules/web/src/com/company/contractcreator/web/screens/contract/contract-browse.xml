@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://browseCaption"
+        focusComponent="contractsTable"
+        messagesPack="com.company.contractcreator.web.screens.contract">
+    <data readOnly="true">
+        <collection id="contractsDc"
+                    class="com.company.contractcreator.entity.Contract"
+        >
+            <view extends="_local">
+                <property name="customer" view="_minimal"/>
+                <property name="provider" view="_minimal"/>
+            </view>
+            <loader id="contractsDl">
+                <query>
+                    <![CDATA[select e from contractcreator_Contract e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="contractsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="contractsTable"
+                dataLoader="contractsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="contractsTable"
+                    width="100%"
+                    dataContainer="contractsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="conclusion"
+                        caption="&#1044;&#1072;&#1090;&#1072; &#1079;&#1072;&#1082;&#1083;&#1102;&#1095;&#1077;&#1085;&#1080;&#1103;"/>
+                <column id="execution"
+                        caption="&#1057;&#1088;&#1086;&#1082; &#1080;&#1089;&#1087;&#1086;&#1083;&#1085;&#1077;&#1085;&#1080;&#1103;"/>
+                <column id="amount"
+                        caption="&#1057;&#1091;&#1084;&#1084;&#1072; &#1087;&#1086; &#1076;&#1086;&#1075;&#1086;&#1074;&#1086;&#1088;&#1091;"/>
+                <column id="totalCost"
+                        caption="&#1048;&#1090;&#1086;&#1075;&#1086;&#1074;&#1072;&#1103; &#1089;&#1090;&#1086;&#1080;&#1084;&#1086;&#1089;&#1090;&#1100;"/>
+                <column id="customer" caption="&#1050;&#1083;&#1080;&#1077;&#1085;&#1090;"/>
+                <column id="provider" caption="&#1055;&#1086;&#1076;&#1088;&#1103;&#1076;&#1095;&#1080;&#1082;"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="contractsTable.create"
+                        caption="&#1044;&#1086;&#1073;&#1072;&#1074;&#1080;&#1090;&#1100;"/>
+                <button id="editBtn" action="contractsTable.edit"
+                        caption="&#1056;&#1077;&#1076;&#1072;&#1082;&#1090;&#1080;&#1088;&#1086;&#1074;&#1072;&#1090;&#1100;"/>
+                <button id="removeBtn" action="contractsTable.remove"
+                        caption="&#1059;&#1076;&#1072;&#1083;&#1080;&#1090;&#1100;"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

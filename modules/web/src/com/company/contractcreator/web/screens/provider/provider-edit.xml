@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://editorCaption"
+        focusComponent="form"
+        messagesPack="com.company.contractcreator.web.screens.provider">
+    <data>
+        <instance id="providerDc"
+                  class="com.company.contractcreator.entity.Provider"
+                  view="_local">
+            <loader id="providerDl"/>
+        </instance>
+        <collection id="contractsDc" class="com.company.contractcreator.entity.Contract">
+            <view extends="_local">
+                <property name="customer" view="_minimal"/>
+            </view>
+            <loader id="contractsDl">
+                <query>
+                    <![CDATA[select e from contractcreator_Contract e where e.provider = :provider]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="providerDc">
+            <column width="250px">
+                <checkBox id="personField" property="person" caption="&#1070;&#1088;. &#1083;&#1080;&#1094;&#1086;"/>
+                <textField id="fioField" property="fio" caption="&#1060;&#1048;&#1054;"/>
+                <textField id="phoneField" property="phone"
+                           caption="&#1058;&#1077;&#1083;&#1077;&#1092;&#1086;&#1085;"/>
+                <textField id="emailField" property="email"/>
+                <textField id="specialtyField" property="specialty"
+                           caption="&#1057;&#1087;&#1077;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1086;&#1089;&#1090;&#1100;"/>
+                <textField id="addressField" property="address" caption="&#1040;&#1076;&#1088;&#1077;&#1089;"/>
+                <textField id="innField" property="inn" visible="false" caption="&#1048;&#1053;&#1053;"/>
+                <textField id="directorField" property="director" visible="false"
+                           caption="&#1044;&#1080;&#1088;&#1077;&#1082;&#1090;&#1086;&#1088;"/>
+            </column>
+        </form>
+        <label value="&#1044;&#1086;&#1075;&#1086;&#1074;&#1086;&#1088;&#1099;"/>
+        <groupBox spacing="true" width="520px">
+            <table id="contractsTable" height="200px" width="500px" dataContainer="contractsDc">
+                <columns>
+                    <column id="conclusion"
+                            caption="&#1044;&#1072;&#1090;&#1072; &#1079;&#1072;&#1082;&#1083;&#1102;&#1095;&#1077;&#1085;&#1080;&#1103;"/>
+                    <column id="execution"
+                            caption="&#1057;&#1088;&#1086;&#1082; &#1080;&#1089;&#1087;&#1086;&#1083;&#1085;&#1077;&#1085;&#1080;&#1103;"/>
+                    <column id="amount"
+                            caption="&#1057;&#1091;&#1084;&#1084;&#1072; &#1087;&#1086; &#1044;&#1086;&#1075;&#1086;&#1074;&#1086;&#1088;&#1091;"/>
+                    <column id="totalCost"
+                            caption="&#1048;&#1090;&#1086;&#1075;&#1086;&#1074;&#1072;&#1103; &#1089;&#1090;&#1086;&#1080;&#1084;&#1086;&#1089;&#1090;&#1100;"/>
+                    <column id="customer" caption="&#1055;&#1086;&#1076;&#1088;&#1103;&#1076;&#1095;&#1080;&#1082;"/>
+                </columns>
+            </table>
+        </groupBox>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>
