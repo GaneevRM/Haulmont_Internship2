@@ -1,6 +1,7 @@
 package com.company.contractcreator.entity;
 
 import com.haulmont.chile.core.annotations.NamePattern;
+import com.haulmont.chile.core.annotations.NumberFormat;
 import com.haulmont.cuba.core.entity.StandardEntity;
 
 import javax.persistence.Column;
@@ -35,11 +36,20 @@ public class Provider extends StandardEntity {
     @Column(name = "ADDRESS")
     protected String address;
 
+    @NumberFormat(pattern = "#")
     @Column(name = "INN", unique = true)
-    protected String inn;
+    protected Long inn;
 
     @Column(name = "DIRECTOR")
     protected String director;
+
+    public void setInn(Long inn) {
+        this.inn = inn;
+    }
+
+    public Long getInn() {
+        return inn;
+    }
 
     public String getSpecialty() {
         return specialty;
@@ -63,14 +73,6 @@ public class Provider extends StandardEntity {
 
     public void setDirector(String director) {
         this.director = director;
-    }
-
-    public String getInn() {
-        return inn;
-    }
-
-    public void setInn(String inn) {
-        this.inn = inn;
     }
 
     public String getAddress() {

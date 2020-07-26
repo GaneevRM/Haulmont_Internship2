@@ -29,7 +29,7 @@ public class Customer extends StandardEntity {
     protected String email;
 
     @NotNull
-    @Column(name = "ADDRESS", nullable = false, unique = true)
+    @Column(name = "ADDRESS", nullable = false)
     protected String address;
 
     public String getAddress() {

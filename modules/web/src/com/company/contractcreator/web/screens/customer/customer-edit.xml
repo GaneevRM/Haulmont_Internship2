@@ -33,8 +33,8 @@
             </column>
         </form>
         <label value="&#1044;&#1086;&#1075;&#1086;&#1074;&#1086;&#1088;&#1099;"/>
-        <groupBox spacing="true" width="520px">
-            <table id="contractsTable" height="200px" width="500px" dataContainer="contractsDc">
+        <groupBox spacing="true" width="1020px">
+            <table id="contractsTable" height="200px" width="1000px" dataContainer="contractsDc">
                 <columns>
                     <column id="conclusion"
                             caption="&#1044;&#1072;&#1090;&#1072; &#1079;&#1072;&#1082;&#1083;&#1102;&#1095;&#1077;&#1085;&#1080;&#1103;"/>

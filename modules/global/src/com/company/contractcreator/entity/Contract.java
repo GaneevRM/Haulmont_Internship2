@@ -21,11 +21,11 @@ public class Contract extends StandardEntity {
 
     @NotNull
     @Column(name = "AMOUNT", nullable = false)
-    protected String amount;
+    protected Double amount;
 
     @NotNull
     @Column(name = "TOTAL_COST", nullable = false)
-    protected String totalCost;
+    protected Double totalCost;
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -36,6 +36,22 @@ public class Contract extends StandardEntity {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "PROVIDER_ID")
     protected Provider provider;
+
+    public void setAmount(Double amount) {
+        this.amount = amount;
+    }
+
+    public Double getAmount() {
+        return amount;
+    }
+
+    public void setTotalCost(Double totalCost) {
+        this.totalCost = totalCost;
+    }
+
+    public Double getTotalCost() {
+        return totalCost;
+    }
 
     public void setExecution(LocalDate execution) {
         this.execution = execution;
@@ -67,22 +83,6 @@ public class Contract extends StandardEntity {
 
     public Customer getCustomer() {
         return customer;
-    }
-
-    public String getTotalCost() {
-        return totalCost;
-    }
-
-    public void setTotalCost(String totalCost) {
-        this.totalCost = totalCost;
-    }
-
-    public String getAmount() {
-        return amount;
-    }
-
-    public void setAmount(String amount) {
-        this.amount = amount;
     }
 
 }
